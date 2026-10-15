@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="alert alert-danger">
+        <h4 class="alert-heading" th:text="${titulo}">Erro</h4>
+        <hr>
+        <p th:text="${mensagem}">Ocorreu um erro inesperado.</p>
+        <small class="text-muted">Código: <span th:text="${status}"></span></small>
+    </div>
+    <a href="/" class="btn btn-secondary">Voltar ao início</a>
+</div>
+</body>
+</html>
