@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sair - Sistema de Vendas</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/theme.css}" rel="stylesheet">
+</head>
+<body class="bg-light">
+<main class="auth-wrapper">
+    <div class="card auth-card">
+        <div class="card-body p-4 p-md-5 text-center">
+            <div class="auth-logo mb-3"></div>
+            <h4 class="mb-2">Deseja sair?</h4>
+            <p class="text-secondary mb-4">
+                Você está conectado como
+                <strong sec:authentication="principal.nome">Usuário</strong>.
+            </p>
+
+            <form th:action="@{/logout}" method="post">
+                <div class="d-flex gap-2">
+                    <a th:href="@{/}" class="btn btn-light w-50">Cancelar</a>
+                    <button type="submit" class="btn btn-primary w-50">Sair</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

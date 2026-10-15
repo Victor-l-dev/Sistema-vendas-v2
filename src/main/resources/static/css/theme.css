@@ -369,6 +369,48 @@ h5.text-secondary {
     color: var(--roxo-700);
 }
 
+/* ---------- Login / Logout ---------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-logo {
+    width: 48px;
+    height: 48px;
+    margin-inline: auto;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--roxo-400), var(--roxo-600));
+    box-shadow: 0 0 0 6px var(--roxo-100);
+    animation: pulso 3s ease-in-out infinite;
+}
+
+/* ---------- Usuário logado no menu ---------- */
+.navbar.bg-dark .usuario-logado {
+    color: var(--texto-suave);
+    font-size: .875rem;
+    padding: .35rem .8rem;
+    border-radius: 999px;
+    background: var(--roxo-50);
+    border: 1px solid var(--borda);
+}
+
+.navbar.bg-dark .navbar-toggler {
+    border-color: var(--borda);
+}
+
+.navbar.bg-dark .navbar-toggler-icon {
+    filter: invert(25%) sepia(80%) saturate(2000%) hue-rotate(250deg);
+}
+
 /* ---------- Animações ---------- */
 @keyframes sobe {
     from { opacity: 0; transform: translateY(10px); }
