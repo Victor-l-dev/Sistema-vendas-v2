@@ -16,13 +16,9 @@ public class ConfiguracoesDeSeguranca {
     public SecurityFilterChain filtroDeSeguranca(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                // Recursos públicos
                 .requestMatchers("/css/**", "/js/**", "/login", "/error").permitAll()
-                // Cadastros: somente ADMIN
                 .requestMatchers("/clientes/**", "/produtos/**").hasRole("ADMIN")
-                // Pedidos: ADMIN e PADRAO
                 .requestMatchers("/pedidos/**").hasAnyRole("ADMIN", "PADRAO")
-                // Qualquer outra rota exige login
                 .anyRequest().authenticated())
             .formLogin(form -> form
                 .loginPage("/login")

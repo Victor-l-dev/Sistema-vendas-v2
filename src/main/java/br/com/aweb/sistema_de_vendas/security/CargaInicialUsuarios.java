@@ -8,7 +8,6 @@ import br.com.aweb.sistema_de_vendas.model.Usuario;
 import br.com.aweb.sistema_de_vendas.model.enums.UsuarioRole;
 import br.com.aweb.sistema_de_vendas.service.UsuarioService;
 
-// Cadastra os usuários de teste (ADMIN e PADRAO) na primeira execução
 @Component
 public class CargaInicialUsuarios implements CommandLineRunner {
 
