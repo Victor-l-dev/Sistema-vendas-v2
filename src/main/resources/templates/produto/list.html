@@ -18,7 +18,7 @@
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link active" th:href="@{/produtos}">Produtos</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/pedidos}">Pedidos</a></li>
-                <li class="nav-item ms-lg-3"><span class="navbar-text usuario-logado" sec:authentication="principal.nome">UsuÃ¡rio</span></li>
+                <li class="nav-item ms-lg-3"><span class="navbar-text usuario-logado" sec:authentication="principal.nome">Usuário</span></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Sair</a></li>
             </ul>
         </div>
