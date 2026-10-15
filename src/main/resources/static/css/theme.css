@@ -1,0 +1,406 @@
+/* =========================================================
+   Tema Roxo & Branco — sobrescreve o Bootstrap 5.3
+   ========================================================= */
+
+:root {
+    --roxo-900: #2e1065;
+    --roxo-700: #5b21b6;
+    --roxo-600: #6d28d9;
+    --roxo-500: #7c3aed;
+    --roxo-400: #a78bfa;
+    --roxo-200: #ddd6fe;
+    --roxo-100: #ede9fe;
+    --roxo-50:  #f7f5ff;
+
+    --texto: #1f1735;
+    --texto-suave: #6b6585;
+    --borda: #ece8f7;
+
+    --sombra-sm: 0 1px 2px rgba(46, 16, 101, .04), 0 2px 8px rgba(46, 16, 101, .05);
+    --sombra-md: 0 4px 12px rgba(46, 16, 101, .08), 0 12px 32px rgba(46, 16, 101, .06);
+    --raio: 14px;
+    --transicao: 220ms cubic-bezier(.2, .8, .2, 1);
+
+    /* Variáveis do Bootstrap */
+    --bs-primary: var(--roxo-600);
+    --bs-primary-rgb: 109, 40, 217;
+    --bs-link-color: var(--roxo-600);
+    --bs-link-color-rgb: 109, 40, 217;
+    --bs-link-hover-color: var(--roxo-700);
+    --bs-link-hover-color-rgb: 91, 33, 182;
+    --bs-body-color: var(--texto);
+    --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --bs-border-color: var(--borda);
+    --bs-secondary-color: var(--texto-suave);
+    --bs-focus-ring-color: rgba(124, 58, 237, .2);
+}
+
+/* ---------- Base ---------- */
+body,
+body.bg-light {
+    background:
+        radial-gradient(1200px 500px at 100% -10%, var(--roxo-100), transparent 60%),
+        radial-gradient(900px 400px at -10% 110%, var(--roxo-50), transparent 60%),
+        #fbfaff !important;
+    background-attachment: fixed;
+    color: var(--texto);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+::selection {
+    background: var(--roxo-200);
+    color: var(--roxo-900);
+}
+
+h1, h2, h3, h4, h5 {
+    letter-spacing: -.01em;
+}
+
+.text-primary { color: var(--roxo-600) !important; }
+.text-secondary { color: var(--texto-suave) !important; }
+.text-dark { color: var(--texto) !important; }
+
+/* ---------- Navbar ---------- */
+.navbar.bg-dark {
+    background: rgba(255, 255, 255, .78) !important;
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    animation: desce var(--transicao) both;
+}
+
+.navbar.bg-dark .navbar-brand {
+    color: var(--roxo-700);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+}
+
+.navbar.bg-dark .navbar-brand::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--roxo-400), var(--roxo-600));
+    box-shadow: 0 0 0 4px var(--roxo-100);
+    animation: pulso 3s ease-in-out infinite;
+}
+
+.navbar.bg-dark .nav-link {
+    color: var(--texto-suave);
+    font-weight: 500;
+    position: relative;
+    padding-inline: .9rem !important;
+    transition: color var(--transicao);
+}
+
+.navbar.bg-dark .nav-link::after {
+    content: "";
+    position: absolute;
+    left: .9rem;
+    right: .9rem;
+    bottom: .2rem;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--roxo-500);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transicao);
+}
+
+.navbar.bg-dark .nav-link:hover,
+.navbar.bg-dark .nav-link.active {
+    color: var(--roxo-700);
+}
+
+.navbar.bg-dark .nav-link:hover::after,
+.navbar.bg-dark .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* ---------- Cards ---------- */
+.card {
+    border: 1px solid var(--borda) !important;
+    border-radius: var(--raio);
+    box-shadow: var(--sombra-sm) !important;
+    background: #fff;
+    overflow: hidden;
+    transition: box-shadow var(--transicao), transform var(--transicao);
+    animation: sobe .45s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.card:hover {
+    box-shadow: var(--sombra-md) !important;
+}
+
+/* entrada em cascata quando há vários cards */
+.container > .card:nth-of-type(2) { animation-delay: .06s; }
+.container > .card:nth-of-type(3) { animation-delay: .12s; }
+.container > .card:nth-of-type(4) { animation-delay: .18s; }
+
+.card-header {
+    background: #fff !important;
+    border-bottom: 1px solid var(--borda);
+    position: relative;
+}
+
+.card-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--roxo-500), var(--roxo-400), transparent);
+    opacity: .85;
+}
+
+.card-header h4,
+.card-header h5 {
+    font-weight: 650;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+    transition: transform var(--transicao), box-shadow var(--transicao),
+                background-color var(--transicao), color var(--transicao), border-color var(--transicao);
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0) scale(.98);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--roxo-600);
+    --bs-btn-border-color: var(--roxo-600);
+    --bs-btn-hover-bg: var(--roxo-700);
+    --bs-btn-hover-border-color: var(--roxo-700);
+    --bs-btn-active-bg: var(--roxo-700);
+    --bs-btn-active-border-color: var(--roxo-700);
+    --bs-btn-disabled-bg: var(--roxo-400);
+    --bs-btn-disabled-border-color: var(--roxo-400);
+    --bs-btn-focus-shadow-rgb: 124, 58, 237;
+    background-image: linear-gradient(135deg, var(--roxo-500), var(--roxo-600));
+    box-shadow: 0 2px 8px rgba(109, 40, 217, .25);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 18px rgba(109, 40, 217, .3);
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+    --bs-btn-color: var(--roxo-600);
+    --bs-btn-border-color: var(--roxo-200);
+    --bs-btn-hover-color: var(--roxo-700);
+    --bs-btn-hover-bg: var(--roxo-50);
+    --bs-btn-hover-border-color: var(--roxo-400);
+    --bs-btn-active-color: var(--roxo-700);
+    --bs-btn-active-bg: var(--roxo-100);
+    --bs-btn-active-border-color: var(--roxo-400);
+}
+
+.btn-secondary {
+    --bs-btn-color: var(--roxo-700);
+    --bs-btn-bg: var(--roxo-100);
+    --bs-btn-border-color: var(--roxo-100);
+    --bs-btn-hover-color: var(--roxo-900);
+    --bs-btn-hover-bg: var(--roxo-200);
+    --bs-btn-hover-border-color: var(--roxo-200);
+    --bs-btn-active-color: var(--roxo-900);
+    --bs-btn-active-bg: var(--roxo-200);
+}
+
+.btn-outline-danger {
+    --bs-btn-border-color: #f3c6cc;
+    --bs-btn-hover-bg: #fdf2f4;
+    --bs-btn-hover-color: #b42335;
+    --bs-btn-hover-border-color: #e88a97;
+}
+
+.btn-light {
+    --bs-btn-bg: #fff;
+    --bs-btn-hover-bg: var(--roxo-50);
+    --bs-btn-hover-border-color: var(--roxo-200);
+    border-color: var(--borda) !important;
+}
+
+.btn-success {
+    --bs-btn-bg: #16a34a;
+    --bs-btn-border-color: #16a34a;
+    --bs-btn-hover-bg: #15803d;
+    --bs-btn-hover-border-color: #15803d;
+}
+
+/* ---------- Formulários ---------- */
+.form-label {
+    font-size: .875rem;
+    font-weight: 500;
+    color: var(--texto-suave);
+    margin-bottom: .35rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border-color: var(--borda);
+    background-color: #fff;
+    transition: border-color var(--transicao), box-shadow var(--transicao), background-color var(--transicao);
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: var(--roxo-200);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--roxo-400);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, .12);
+    background-color: #fff;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    animation: treme .35s ease-in-out;
+}
+
+h5.text-secondary {
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--roxo-600) !important;
+}
+
+/* ---------- Tabelas ---------- */
+.table {
+    --bs-table-hover-bg: var(--roxo-50);
+    --bs-table-striped-bg: #fcfbff;
+    --bs-table-border-color: var(--borda);
+}
+
+.table > thead.table-light > tr > th,
+.table-light {
+    --bs-table-bg: #faf8ff;
+    color: var(--texto-suave);
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    border-bottom: 1px solid var(--borda);
+}
+
+.table > tbody > tr {
+    transition: background-color var(--transicao);
+    animation: aparece .4s ease-out both;
+}
+
+.table > tbody > tr:nth-child(1) { animation-delay: .05s; }
+.table > tbody > tr:nth-child(2) { animation-delay: .08s; }
+.table > tbody > tr:nth-child(3) { animation-delay: .11s; }
+.table > tbody > tr:nth-child(4) { animation-delay: .14s; }
+.table > tbody > tr:nth-child(5) { animation-delay: .17s; }
+.table > tbody > tr:nth-child(6) { animation-delay: .20s; }
+.table > tbody > tr:nth-child(7) { animation-delay: .23s; }
+.table > tbody > tr:nth-child(n+8) { animation-delay: .26s; }
+
+.table > tbody > tr > td:first-child {
+    box-shadow: inset 0 0 0 transparent;
+    transition: box-shadow var(--transicao);
+}
+
+.table-hover > tbody > tr:hover > td:first-child {
+    box-shadow: inset 3px 0 0 var(--roxo-400);
+}
+
+/* ---------- Badges (versão suave) ---------- */
+.badge {
+    font-weight: 600;
+    letter-spacing: .02em;
+    padding: .4em .75em;
+    border-radius: 999px;
+}
+
+.badge.bg-success   { background: #e8f8ee !important; color: #157a3c; }
+.badge.bg-danger    { background: #fdecef !important; color: #b42335; }
+.badge.bg-secondary { background: var(--roxo-100) !important; color: var(--roxo-700); }
+.badge.bg-primary   { background: var(--roxo-100) !important; color: var(--roxo-700); }
+
+/* ---------- Alertas ---------- */
+.alert {
+    border-radius: 12px;
+    border: 1px solid transparent;
+    animation: sobe .4s ease-out both;
+}
+
+.alert-warning {
+    background: #fff8eb;
+    border-color: #fde7bf;
+    color: #8a5a00;
+}
+
+.alert-danger {
+    background: #fdf2f4;
+    border-color: #f6cdd3;
+    color: #9f1d2e;
+}
+
+.alert-success {
+    background: #effaf3;
+    border-color: #c9eed6;
+    color: #157a3c;
+}
+
+.alert-info {
+    background: var(--roxo-50);
+    border-color: var(--roxo-200);
+    color: var(--roxo-700);
+}
+
+/* ---------- Animações ---------- */
+@keyframes sobe {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes desce {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aparece {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes pulso {
+    0%, 100% { box-shadow: 0 0 0 4px var(--roxo-100); }
+    50%      { box-shadow: 0 0 0 7px rgba(237, 233, 254, .5); }
+}
+
+@keyframes treme {
+    0%, 100% { transform: translateX(0); }
+    25%      { transform: translateX(-3px); }
+    75%      { transform: translateX(3px); }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
